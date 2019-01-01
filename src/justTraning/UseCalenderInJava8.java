@@ -51,6 +51,19 @@ public class UseCalenderInJava8 {
 
         System.out.println("now the date change" + dateOfWorldCup);
 
+        LocalDate start = LocalDate.of(2019, Month.JANUARY, 1);
+        LocalDate end = LocalDate.of(2019, Month.MARCH, 30);
+
+        performAnimalEnrichment(start, end);
+
     }
 
+    private static void performAnimalEnrichment(LocalDate start, LocalDate end) {
+
+        LocalDate upTo = start;
+        while (upTo.isBefore(end)) {
+            System.out.println("give new toy " + upTo);
+            upTo = upTo.plusMonths(1);
+        }
+    }
 }
