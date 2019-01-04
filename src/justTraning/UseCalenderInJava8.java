@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 public class UseCalenderInJava8 {
 
@@ -56,6 +58,27 @@ public class UseCalenderInJava8 {
 
         performAnimalEnrichment(start, end);
 
+
+        //formatting date and time 
+
+        LocalDate secondWarWorldDate = LocalDate.of(1939, Month.SEPTEMBER, 1);
+        LocalTime localTime = LocalTime.of(12, 00);
+
+        LocalDateTime localDateTimeSecodWar = LocalDateTime.of(secondWarWorldDate, localTime);
+
+        DateTimeFormatter shortF = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
+        DateTimeFormatter mediumF = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
+
+        System.out.println(shortF.format(localDateTimeSecodWar));
+        System.out.println(mediumF.format(localDateTimeSecodWar));
+        
+        //create your own format
+        /***
+         * M outputs 1 , MM outputs 01 , MMM outputs jan  , MMMM outputs January
+         * yy outputs tow digit of year yyyy outputs four digit of year 
+         */
+        DateTimeFormatter myOwnDateFormat = DateTimeFormatter.ofPattern("MMMM dd, yyyy , hh:mm");
+       System.out.println(myOwnDateFormat.format(localDateTimeSecodWar));
     }
 
     private static void performAnimalEnrichment(LocalDate start, LocalDate end) {
